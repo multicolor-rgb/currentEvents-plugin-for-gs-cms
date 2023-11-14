@@ -94,7 +94,7 @@ if (file_exists($file)) {
     }; ?>
 
 
-    <label for="">Show header</label>
+    <label for="">Show header nav</label>
     <select name="header" class="header-input" id="">
         <option value="true">Yes</option>
         <option value="false">No</option>

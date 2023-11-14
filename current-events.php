@@ -114,16 +114,27 @@ function headCurrentEvent()
   if (file_exists($file) && $fileJS->header == true) {
 
     echo "{
+      eventBackgroundColor:'blue',
         initialView: '" . $fileJS->initialView . "',
-      locale:'" . $fileJS->locale . "',
-  headerToolbar:{
+      locale:'" . $fileJS->locale . "', ";
+
+    if ($fileJS->header == 'true') {
+
+      echo "  headerToolbar:{
           start: 'title',
           center: '',
           end: 'prev,next'
-        }
-     ";
+        }";
+    } else {
+      echo "  headerToolbar:{
+        start: 'title',
+        center: '',
+        end: ''
+      }";
+    };
   } else {
     echo "{
+
           initialView: 'dayGridMonth',
         locale:'pl',
         headerToolbar:{
@@ -156,6 +167,7 @@ function headCurrentEvent()
   echo "
           
           ],
+         
     
           eventContent: function( info ) {
             return {html: info.event.title};

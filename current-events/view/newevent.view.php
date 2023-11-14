@@ -66,13 +66,13 @@ global $GSADMIN;; ?>
 
     </textarea>
     <label for="start-date">Start Date Event (Required)</label>
-    <input type="datetime-local" name="start-date" required <?php if (isset($_GET['edit'])) {
-                                                                echo 'value="' . $fileJS->start . '"';
-                                                            }; ?>>
+    <input type="date" name="start-date" required <?php if (isset($_GET['edit'])) {
+                                                        echo 'value="' . $fileJS->start . '"';
+                                                    }; ?>>
     <label for="end-date">End Date Event (Required)</label>
-    <input type="datetime-local" name="end-date" required <?php if (isset($_GET['edit'])) {
-                                                                echo 'value="' . $fileJS->end . '"';
-                                                            }; ?>>
+    <input type="date" name="end-date" required <?php if (isset($_GET['edit'])) {
+                                                    echo 'value="' . $fileJS->end . '"';
+                                                }; ?>>
     <label for="end-date">Color Event (Required)</label>
     <input type="color" name="color-current-event" required <?php if (isset($_GET['edit'])) {
                                                                 echo 'value="' . $fileJS->color . '"';
