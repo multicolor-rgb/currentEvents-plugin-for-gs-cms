@@ -93,6 +93,12 @@ function headCurrentEvent()
 {
   global $SITEURL;
   echo "
+  <style>
+  .fc-daygrid-event {
+    white-space: normal !important;
+    align-items: normal !important;
+  }
+  </style>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
     
    <script>
