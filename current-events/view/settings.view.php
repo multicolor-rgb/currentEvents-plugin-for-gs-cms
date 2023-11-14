@@ -35,12 +35,12 @@
         width: 100%;
         padding: 5px;
         border-radius: 0;
-        border:solid 1px #ddd;
+        border: solid 1px #ddd;
         background: #fff;
-        margin:10px 0;
+        margin: 10px 0;
     }
 
-    .form-settings .create-settings{
+    .form-settings .create-settings {
         display: inline-flex;
         padding: 5px 10px;
         border: solid 1px #000;
@@ -48,7 +48,7 @@
         color: #fff !important;
         text-decoration: none !important;
         width: 200px;
-        margin-top: 10px;  
+        margin-top: 10px;
     }
 </style>
 
@@ -88,9 +88,23 @@ if (file_exists($file)) {
         <option value="listYear">listYear</option>
     </select>
 
+    <label for="">First day</label>
+    <select name="firstday" class="firstday">
+        <option value="1">Monday</option>
+        <option value="2">Tuesday</option>
+        <option value="3">Wednesday</option>
+        <option value="4">Thursday</option>
+        <option value="5">Friday</option>
+        <option value="6">Saturday</option>
+        <option value="0">Sunday</option>
+
+    </select>
+
+
     <?php if (file_exists($file)) {
 
         echo '<script>document.querySelector(".initialView").value = "' . $fileJson->initialView . '"</script>';
+        echo '<script>document.querySelector(".firstday").value = "' . $fileJson->firstDay . '"</script>';
     }; ?>
 
 

@@ -59,12 +59,10 @@ global $GSADMIN;; ?>
                                                             }; ?>>
     <label for="description-current-event">Description </label>
     <textarea name="description-current-event">
-
-    <?php if (isset($_GET['edit'])) {
-        echo $fileJS->eventdescription;
-    }; ?>
-
-    </textarea>
+<?php if (isset($_GET['edit'])) {
+    echo $fileJS->eventdescription;
+}; ?>
+</textarea>
     <label for="start-date">Start Date Event (Required)</label>
     <input type="datetime-local" name="start-date" required <?php if (isset($_GET['edit'])) {
                                                         echo 'value="' . $fileJS->start . '"';

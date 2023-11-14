@@ -59,7 +59,7 @@ function currentEvent()
   if (isset($_POST['create-settings'])) {
 
     $createEvent = new CurrentEventSettings();
-    $createEvent->getInfo($_POST['initialView'], $_POST['locale'], $_POST['header']);
+    $createEvent->getInfo($_POST['initialView'], $_POST['locale'], $_POST['header'], $_POST['firstday']);
     $createEvent->createFile();
   }
 
@@ -123,6 +123,8 @@ function headCurrentEvent()
       eventBackgroundColor:'blue',
         initialView: '" . $fileJS->initialView . "',
       locale:'" . $fileJS->locale . "',
+      locale:'" . $fileJS->locale . "',
+      firstDay:" . $fileJS->firstDay . ",
       displayEventEnd:true, ";
 
     if ($fileJS->header == 'true') {

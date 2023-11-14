@@ -6,13 +6,15 @@ class CurrentEventSettings
     public $initialView;
     public $locale;
     public $header;
+    public $firstDay;
 
 
-    public function getInfo($initialView, $locale, $header)
+    public function getInfo($initialView, $locale, $header, $firstDay)
     {
         $this->initialView = $initialView;
         $this->locale = $locale;
         $this->header = $header;
+        $this->firstDay = $firstDay;
     }
 
 
@@ -27,6 +29,7 @@ class CurrentEventSettings
         $eventSettings['initialView'] = $this->initialView;
         $eventSettings['locale'] = $this->locale;
         $eventSettings['header'] = $this->header;
+        $eventSettings['firstDay'] = $this->firstDay;
 
 
         if (!file_exists($folder)) {
