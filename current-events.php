@@ -116,7 +116,8 @@ function headCurrentEvent()
     echo "{
       eventBackgroundColor:'blue',
         initialView: '" . $fileJS->initialView . "',
-      locale:'" . $fileJS->locale . "', ";
+      locale:'" . $fileJS->locale . "',
+      displayEventEnd:true, ";
 
     if ($fileJS->header == 'true') {
 
