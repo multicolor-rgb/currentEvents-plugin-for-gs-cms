@@ -97,6 +97,8 @@ function headCurrentEvent()
   .fc-daygrid-event {
     white-space: normal !important;
     align-items: normal !important;
+    padding:10px;
+    box-sizing:border-box;
   }
   </style>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
