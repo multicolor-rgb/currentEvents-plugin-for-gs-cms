@@ -70,14 +70,14 @@ if (file_exists($file)) {
 
 <form class="form-settings" method="POST">
 
-    <label for="">Locale Shortcut</label>
+    <label for="">Lang. shortcode</label>
     <input type="text" name="locale" placeholder="en" <?php
                                                         if (file_exists($file)) {
                                                             echo 'value="' . $fileJson->locale . '"';
                                                         }; ?>>
 
 
-    <label for="">Locale Shortcut</label>
+    <label for="">Grid Display</label>
     <select name="initialView" class="initialView" id="">
         <option value="dayGridMonth">dayGridMonth</option>
         <option value="dayGridWeek">dayGridWeek</option>
@@ -98,7 +98,7 @@ if (file_exists($file)) {
     </select>
 
 
-    <label for="">default background color</label>
+    <label for="">Default background color</label>
     <input type="color" class="backgroundColor" name="backgroundColor">
 
     <label for="">Default text color</label>

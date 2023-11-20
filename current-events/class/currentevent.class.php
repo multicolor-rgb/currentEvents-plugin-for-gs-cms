@@ -30,8 +30,8 @@ class CurrentEvent
         $event = [];
         $event['eventname'] = $this->title;
         $event['eventdescription'] = $this->description;
-        $event['title'] = "<p style='margin-top:20px;font-size:10px;line-height:0.8;color:" . $this->colortext . " !important;margin:3px;padding:0;font-weight:bold;'>" . $this->title . "</p> 
-        <p style='font-size:10px;color:" . $this->colortext . " !important;margin:3px;padding:0;'>" . $this->description . "</p>";
+        $event['title'] = "<a href='". $this->url."' style='text-decoration:none;'><p style='margin-top:20px;font-size:10px;line-height:0.8;color:" . $this->colortext . " !important;margin:3px;padding:0;font-weight:bold;'>" . $this->title . "</p> 
+        <p style='font-size:10px;color:" . $this->colortext . " !important;margin:3px;padding:0;'>" . $this->description . "</p></a>";
         $event['start'] = $this->startDate;
         $event['end'] =  $this->endDate;
         $event['colortext'] =  $this->colortext;
