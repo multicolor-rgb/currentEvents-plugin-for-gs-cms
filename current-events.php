@@ -85,7 +85,7 @@ function showEventCalendar()
   <div id="calendar"></div>
  
   <div class="datepicker">
-  <input type="date" id="dateInput" max="' . date('Y-m-d') . '">
+  <input type="date" id="dateInput" min="' . date('Y-m-d') . '">
   <button id="goToDateButton">check the date</button>
   </div>
   

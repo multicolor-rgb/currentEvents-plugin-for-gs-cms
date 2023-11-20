@@ -27,6 +27,7 @@ class CurrentEventSettings
         global $SITEURL;
         global $GSADMIN;
 
+        $folderNone = GSDATAOTHERPATH . 'current-events/';
         $folder = GSDATAOTHERPATH . 'current-events/settings/';
 
         $eventSettings = [];
@@ -38,9 +39,11 @@ class CurrentEventSettings
         $eventSettings['textColor'] = $this->textColor;
 
 
-        if (!file_exists($folder)) {
+        if (!file_exists($folderNone)) {
+            mkdir($folderNone, 0755);
             mkdir($folder, 0755);
             file_put_contents($folder . '.htaccess', 'Allow from all');
+            file_put_contents($folderNone . '.htaccess', 'Allow from all');
         }
 
 
