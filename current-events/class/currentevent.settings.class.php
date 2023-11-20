@@ -7,14 +7,18 @@ class CurrentEventSettings
     public $locale;
     public $header;
     public $firstDay;
+    public $backgroundColor;
+    public $textColor;
 
 
-    public function getInfo($initialView, $locale, $header, $firstDay)
+    public function getInfo($initialView, $locale, $header, $firstDay, $backgroundColor, $textColor)
     {
         $this->initialView = $initialView;
         $this->locale = $locale;
         $this->header = $header;
         $this->firstDay = $firstDay;
+        $this->backgroundColor = $backgroundColor;
+        $this->textColor = $textColor;
     }
 
 
@@ -30,6 +34,8 @@ class CurrentEventSettings
         $eventSettings['locale'] = $this->locale;
         $eventSettings['header'] = $this->header;
         $eventSettings['firstDay'] = $this->firstDay;
+        $eventSettings['backgroundColor'] = $this->backgroundColor;
+        $eventSettings['textColor'] = $this->textColor;
 
 
         if (!file_exists($folder)) {

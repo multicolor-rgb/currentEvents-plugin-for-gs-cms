@@ -82,10 +82,7 @@ if (file_exists($file)) {
         <option value="dayGridMonth">dayGridMonth</option>
         <option value="dayGridWeek">dayGridWeek</option>
         <option value="dayGridDay">dayGridDay</option>
-        <option value="listDay">listDay</option>
-        <option value="listWeek">listWeek</option>
-        <option value="listMonth">listMonth</option>
-        <option value="listYear">listYear</option>
+
     </select>
 
     <label for="">First day</label>
@@ -101,10 +98,19 @@ if (file_exists($file)) {
     </select>
 
 
+    <label for="">default background color</label>
+    <input type="color" class="backgroundColor" name="backgroundColor">
+
+    <label for="">Default text color</label>
+    <input type="color" class="textColor" name="textColor">
+
+
     <?php if (file_exists($file)) {
 
         echo '<script>document.querySelector(".initialView").value = "' . $fileJson->initialView . '"</script>';
         echo '<script>document.querySelector(".firstday").value = "' . $fileJson->firstDay . '"</script>';
+        echo '<script>document.querySelector(".backgroundColor").value = "' . $fileJson->backgroundColor . '"</script>';
+        echo '<script>document.querySelector(".textColor").value = "' . $fileJson->textColor . '"</script>';
     }; ?>
 
 

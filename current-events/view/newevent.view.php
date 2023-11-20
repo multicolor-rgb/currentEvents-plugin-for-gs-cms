@@ -45,6 +45,10 @@ global $SITEURL;
 global $GSADMIN;; ?>
 <a href="<?php echo $SITEURL . $GSADMIN; ?>/load.php?id=current-events" class="btn">Back to list</a>
 
+<?php
+$fileSet = GSDATAOTHERPATH . 'current-events/settings/settings.json';
+
+?>
 
 <?php if (isset($_GET['edit'])) {
     $file = file_get_contents(GSDATAOTHERPATH . 'current-events/' . $_GET['edit'] . '.json');
@@ -64,22 +68,34 @@ global $GSADMIN;; ?>
 }; ?>
 </textarea>
     <label for="start-date">Start Date Event (Required)</label>
-    <input type="datetime-local" name="start-date" required <?php if (isset($_GET['edit'])) {
+    <input type="date" name="start-date" required <?php if (isset($_GET['edit'])) {
                                                         echo 'value="' . $fileJS->start . '"';
                                                     }; ?>>
-    <label for="end-date">End Date Event (Required)</label>
-    <input type="datetime-local" name="end-date" required <?php if (isset($_GET['edit'])) {
+    <label for="end-date">End Day, i.e. the date on which the event no longer occurs (Required)</label>
+    <input type="date" name="end-date" required <?php if (isset($_GET['edit'])) {
                                                     echo 'value="' . $fileJS->end . '"';
                                                 }; ?>>
-    <label for="end-date">Color Event (Required)</label>
+    <label for="end-date">Background Event (Required)</label>
     <input type="color" name="color-current-event" required <?php if (isset($_GET['edit'])) {
-                                                                echo 'value="' . $fileJS->color . '"';
+                                                                echo 'value="' . $fileJS->backgroundColor . '"';
+                                                            } else {
+
+                                                                if (file_exists($fileSet)) {
+                                                                    $js = json_decode(file_get_contents($fileSet));
+                                                                    echo 'value="' . $js->backgroundColor . '"';
+                                                                };
                                                             }; ?>>
 
     <label for="end-date">Color text (Required)</label>
     <input type="color" name="color-current-text" required <?php if (isset($_GET['edit'])) {
                                                                 echo 'value="' . $fileJS->colortext . '"';
-                                                            }; ?>>
+                                                            } else {
+
+                                                                if (file_exists($fileSet)) {
+                                                                    $js = json_decode(file_get_contents($fileSet));
+                                                                    echo 'value="' . $js->textColor . '"';
+                                                                };
+                                                            };; ?>>
 
     <label for="url-current-event">Link to event (optional)</label>
     <input type="text" name="url-current-event" <?php if (isset($_GET['edit'])) {

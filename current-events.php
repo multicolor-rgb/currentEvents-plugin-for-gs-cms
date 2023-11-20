@@ -14,7 +14,7 @@ $thisfile = basename(__FILE__, ".php");
 register_plugin(
   $thisfile, //Plugin id
   'Current Events',     //Plugin name
-  '1.0',         //Plugin version
+  '2.0',         //Plugin version
   'Multicolor',  //Plugin author
   'https://bit.ly/donate-multicolor-plugins', //author website
   'Easy to use plugin calendar', //Plugin description
@@ -59,7 +59,7 @@ function currentEvent()
   if (isset($_POST['create-settings'])) {
 
     $createEvent = new CurrentEventSettings();
-    $createEvent->getInfo($_POST['initialView'], $_POST['locale'], $_POST['header'], $_POST['firstday']);
+    $createEvent->getInfo($_POST['initialView'], $_POST['locale'], $_POST['header'], $_POST['firstday'], $_POST['backgroundColor'], $_POST['textColor']);
     $createEvent->createFile();
   }
 
@@ -80,12 +80,28 @@ function currentEvent()
 
 function showEventCalendar()
 {
-  echo '<div id="calendar"></div>';
+  echo '
+
+  <div id="calendar"></div>
+ 
+  <div class="datepicker">
+  <input type="date" id="dateInput" max="' . date('Y-m-d') . '">
+  <button id="goToDateButton">check the date</button>
+  </div>
+  
+  ';
 }
 
 function returnEventCalendar()
 {
-  return '<div id="calendar"></div>';
+  return '
+
+  <div id="calendar"></div>
+
+  <div class="datepicker">
+  <input type="date" id="dateInput" min="' . date('Y-m-d') . '">
+  <button id="goToDateButton">check the date</button>
+  </div>';
 }
 
 
@@ -94,12 +110,56 @@ function headCurrentEvent()
   global $SITEURL;
   echo "
   <style>
+  
+  .datepicker{
+  display:grid;
+  grid-template-columns:1fr 150px;
+  gap:5px;
+box-sizing:border-box;
+  margin-top:10px;}
+
+  .datepicker input{
+  padding:10px;
+  border-radius: 0.25em;
+  border:solid 1px #ddd;
+  box-sizing:border-box;
+  width:100%;
+  }
+.datepicker button{
+  padding:10px;
+  box-sizing:border-box;
+  background-color: var(--fc-button-bg-color);
+  border-color: var(--fc-button-border-color);
+  color: var(--fc-button-text-color);
+  border-radius: 0.25em;
+  border:none;
+  width20%;
+  cursor:pointer;
+}
+  }
+
+.fc .fc-bg-event{
+  padding-top:25px !important;
+}
+  :root{
+    --fc-bg-event-opacity:0.7 !important;
+  }
+
   .fc-daygrid-event {
     white-space: normal !important;
     align-items: normal !important;
     padding:10px;
     box-sizing:border-box;
   }
+
+  @media(min-width:996px){
+  .fc-scroller.fc-scroller-liquid-absolute{
+    overflow:hidden !important
+  }
+
+};
+
+  
   </style>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
     
@@ -122,19 +182,21 @@ function headCurrentEvent()
   if (file_exists($file) && $fileJS->header == true) {
 
     echo "{
+      
+      allDay:true,
       eventBackgroundColor:'blue',
         initialView: '" . $fileJS->initialView . "',
       locale:'" . $fileJS->locale . "',
       locale:'" . $fileJS->locale . "',
       firstDay:" . $fileJS->firstDay . ",
-      displayEventEnd:true, ";
+      ";
 
     if ($fileJS->header == 'true') {
 
       echo "  headerToolbar:{
           start: 'title',
           center: '',
-          end: 'prev,next'
+          end: 'today,next'
         }";
     } else {
       echo "  headerToolbar:{
@@ -145,13 +207,13 @@ function headCurrentEvent()
     };
   } else {
     echo "{
-
+      allDay:true,
           initialView: 'dayGridMonth',
         locale:'pl',
         headerToolbar:{
           start: 'title',
           center: '',
-          end: 'prev,next'
+          end: 'next'
         }";
   };
 
@@ -179,14 +241,36 @@ function headCurrentEvent()
           
           ],
          
-    
           eventContent: function( info ) {
             return {html: info.event.title};
         }
       
        });
        calendar.render();
-     });
+       
+    
+
+
+     var calendarEl = document.getElementById('calendar');
+      var dateInput = document.getElementById('dateInput');
+      var goToDateButton = document.getElementById('goToDateButton');
+
+      goToDateButton.addEventListener('click', function() {
+        var inputDate = dateInput.value;
+        if (inputDate) {
+          var targetDate = new Date(inputDate);
+          if (targetDate >= new Date()) {
+            // Przejdź do wybranej daty
+            calendar.gotoDate(targetDate);
+          } else {
+            alert('The chosen one cannot be older than the current day!');
+          }
+        } else {
+          alert('enter date!');
+        }
+      });
+    });
+
 
    </script>";
 }
