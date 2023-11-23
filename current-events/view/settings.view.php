@@ -82,6 +82,10 @@ if (file_exists($file)) {
         <option value="dayGridMonth">dayGridMonth</option>
         <option value="dayGridWeek">dayGridWeek</option>
         <option value="dayGridDay">dayGridDay</option>
+        <option value="listDay">listDay</option>
+        <option value="listWeek">listWeek</option>
+        <option value="listMonth">listMonth</option>
+        <option value="listYear">listYear</option>
 
     </select>
 

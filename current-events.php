@@ -1,11 +1,4 @@
 <?php
-/*
-Plugin Name: Hello World
-Description: Echos "Hello World" in footer of theme
-Version: 1.0
-Author: Chris Cagle
-Author URI: http://www.cagintranet.com/
-*/
 
 # get correct id for plugin
 $thisfile = basename(__FILE__, ".php");
@@ -14,7 +7,7 @@ $thisfile = basename(__FILE__, ".php");
 register_plugin(
   $thisfile, //Plugin id
   'Current Events',     //Plugin name
-  '2.0',         //Plugin version
+  '3.0',         //Plugin version
   'Multicolor',  //Plugin author
   'https://bit.ly/donate-multicolor-plugins', //author website
   'Easy to use plugin calendar', //Plugin description
@@ -52,7 +45,7 @@ function currentEvent()
   if (isset($_POST['create-event'])) {
 
     $createEvent = new CurrentEvent();
-    $createEvent->getInfo($_POST['title-current-event'], $_POST['description-current-event'], $_POST['start-date'], $_POST['end-date'], $_POST['color-current-event'], $_POST['color-current-text'], $_POST['url-current-event']);
+    $createEvent->getInfo($_POST['title-current-event'], $_POST['description-current-event'], $_POST['start-date'], $_POST['end-date'], $_POST['color-current-event'], $_POST['color-current-text'], $_POST['url-current-event'],  $_POST['longevent']);
     $createEvent->createFile();
   }
 
